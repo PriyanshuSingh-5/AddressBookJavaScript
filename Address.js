@@ -1,5 +1,4 @@
-//UC1 Create address book
-console.log("Welcome To Address Book")
+//UC2-adding regex patterns for each properties
 class AddressBook
 {
     firstName;
@@ -8,100 +7,95 @@ class AddressBook
     city;
     state;
     zip;
-    phoneNumber;
+    phone;
     email;
-
-    constructor(firstName, lastName, address, city, state, zip, phoneNumber, email)
+    constructor(firstName,lastName,address,city,state,zip,phone,email)
     {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.address=address;
+        this.city=city;
+        this.state=state;
+        this.zip=zip;
+        this.phone=phone;
+        this.email=email;
     }
-
-    get firstName()
+    get firstName(){return this._firstName;}
+    set(firstName)
     {
-        return this._firstName;
+        let nameRegex= RegExp('^[A-Z]{1}[a-z]{2,}');
+        if (nameRegex.test(firstName))
+        this._firstName=firstName;
+        else throw 'Firstname is invalid';
     }
-    set firstName(firstName)
+    get lastName(){return this._lastName;}
+    set (lastName)
     {
-        this._firstName = firstName;
+        let nameRegex= RegExp('^[A-Z]{1}[a-z]{2,}');
+        if (nameRegex.test(lastName))
+        this._lastName=lastName;
+        else throw 'Lastname is invalid';
     }
-
-    get lastName()
+    get address(){return this._address;}
+    set(address)
     {
-        return this._lastName;
+        let adRegex= RegExp('^[A-Z]{1}[a-z0-9]{3,}');
+        if(adRegex.test(address))
+        this._address = address;
+        else throw 'Address is invalid';
     }
-    set lastName(lastName)
+    get city(){ return this._city;}
+    set(city)
     {
-        this._lastName = this.lastName;
+        let cityRegex = RegExp('^[A-Z]{1}[a-z]{3,}');
+        if(cityRegex.test(city))
+        this._city=city;
+        else throw 'City name is invalid';
     }
-
-    get address()
+    get state(){return this._state;}
+    set(state)
     {
-        return this._address;
+        let stateRegex = RegExp('^[A-Z]{1}[a-z]{3,}');
+        if(stateRegex.test(state))
+        this._state=state;
+        else throw 'State name is invalid';
     }
-    set address(address)
+    get zip(){return this._zip;}
+    set(zip)
     {
-        this._address = this.address;
+        let zipRegex = RegExp('^[0-9 ]{6}');
+        if(zipRegex.test(zip))
+        this._zip=zip;
+        else throw 'Zip is invalid';
     }
-
-    get city()
+    get phone(){return this._phone;}
+    set(phone)
     {
-        return this._city;
+        let phoneRegex = RegExp('^[0-9]{10}');
+        if(phoneRegex.test(phone))
+        this._phone=phone;
+        else throw 'Phone number is invalid';
     }
-    set city(city)
+    get email(){return this._email;}
+    set(email)
     {
-        this._city = city;
-    }
-
-    get state()
-    {
-        return this._state;
-    }
-    set state(state)
-    {
-        this._state = state;
-    }
-
-    get zip()
-    {
-        return this._zip;
-    }
-    set zip(zip)
-    {
-        this._zip = zip;
-    }
-
-    get phoneNumber()
-    {
-        return this._phoneNumber;
-    }
-    set phoneNumber(phoneNumber)
-    {
-        this._phoneNumber = this.phoneNumber;
-    }
-
-    get email()
-    {
-        return this._email;
-    }
-    set email(email)
-    {
-        this._email = this.email;
+        let emailRegex = RegExp('^[a-zA-Z0-9]+([+-_.][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]+([.][a-zA-Z]{2})*$');
+        if(emailRegex.test(email))
+        this._email=email;
+        else throw 'Email pattern not valid';
     }
 
     toString()
     {
-        return "FirstName : " + this.firstName + "\nLastName : " + this.lastName + "\nAddress :" + this.address +
-        "\nCity : " + this.city + "\nState : " + this.state + "\nZip : " + this.zip + "\nPhoneNumber : " + this.phoneNumber +
-        "\nemail : " + this.email;
+        return "\nFirstName:"+this.firstName+" ,LastName:"+this.lastName+" ,Address:"+this.address+" ,City:"+this.city+" ,State:"+this.state+" Zip:"+this.zip+" ,Phone:"+this.phone+",Email:"+this.email;
     }
 }
-
-let addressBook = new AddressBook("Priyanshu", "Singh", "Yercaud", "Salem", "TamilNadu", 636601, 9988776655, "priya123@gmail.com");
-console.log(addressBook.toString());
+try
+{
+    let address = new AddressBook("Shivam","Kushwaha","Ghat","Banaras","UP",838372,9393932090,"shiva@gmail.com");
+    console.log(address);
+}
+catch(e)
+{
+    console.error(e);
+}
