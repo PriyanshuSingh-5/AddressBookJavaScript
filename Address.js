@@ -92,10 +92,9 @@ class AddressBook
 }
 try
 {
-    let address = new AddressBook("Shivam","Kushwaha","Ghat","Banaras","UP",838372,9393932090,"shiva@gmail.com");
+    let address = new AddressBook("Shiva","Kushwaha","Ghat","Banaras","UP",838372,9393932090,"shiva@gmail.com");
     console.log(address);
 }
-catch(e)
-{
+catch(e){
     console.error(e);
 }
